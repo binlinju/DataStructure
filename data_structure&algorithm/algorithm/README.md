@@ -1,5 +1,5 @@
-#Algorithm
-##Sorting
+# Algorithm
+## Sorting
 - 排序算法的稳定性：稳定排序算法会让原本有相等键值的记录维持相对次序
 - 数据交换trick: 利用索引进行交换
 ```bash
@@ -24,7 +24,7 @@ def bubble_sort(a_list):
                     a_list[j], a_list[j + 1] = a_list[j+ 1], a_list[j]  # trick:利用下标对元素进行交换
                     stop = False
 ```
-###Select Sort（选择排序）
+### Select Sort（选择排序）
 前一部分为有序数列，后一部分为无序数列，从后部依次找到最小后放入前部，直到结束
 - 时间复杂度\
 O(n<sup>2</sup>)
@@ -39,7 +39,7 @@ def select_sort(a_list):
                 min_index = j                          # 找到最小值对应的index
         a_list[min_index], a_list[i] = a_list[i], a_list[min_index]  
 ```
-###Insertion Sort（插入排序）
+### Insertion Sort（插入排序）
 通过构建有序序列，对于为排序序列，在已排序序列中从后往前扫描，找到相应位置并插上。
 - 插入排序trick：内循环从后向前进行比较，即按`负索引`:`range(i, 0, -1)`\
   在内循环内执行的类似与**局部冒泡排序**
@@ -55,7 +55,7 @@ def insertion_sort(a_list):
             if a_list[j] < a_list[j-1]:
                 a_list[j], a_list[j-1] = a_list[j-1], a_list[j]
 ``` 
-###Shell Sort（希尔排序）
+### Shell Sort（希尔排序）
 希尔排序是插入排序的一种，是其更高效的改进版。希尔排序是将数组列在一个表中并对列分别进行插入排序，重复这个过程，不过每次用更长的列（步长更长了，列数更少了）来进行。
 ```python
 def shell_sort(a_list):
@@ -70,7 +70,8 @@ def shell_sort(a_list):
         gap = gap // 2
 ```
 
-###Quick Sort（快速排序）
+### Quick Sort（快速排序）
+整个数组找基准值的正确位置，比基准值小的所有元素都放在基准值的前面，比基准值大的所有元素均放在基准值的后面，之后继续对左右两部分递归处理
 
 ```python
 def quick_sort(a_list, left=0, right=None):
@@ -94,7 +95,7 @@ def quick_sort(a_list, left=0, right=None):
     quick_sort(low+1,right)
 ```
 
-###Merge Sort（归并排序）
+### Merge Sort（归并排序）
 先递归分解数组，再合并数组
 ```python
 def merge_sort(a_list):
@@ -121,8 +122,16 @@ def merge_sort(a_list):
     return sort_list
 ```
 
-###常见排序算法效率比较
+### 常见排序算法效率比较
+| Sorting Algorithm     | 平均情况 | 最好情况 | 最坏情况 | 辅助空间 | 稳定性 |
+| --------------- | --------------------- | ---------------- | ---------------- | ------ | ------- |
+| Bubble Sort    |  O(n<sup>2</sup>)          | O(n)              | O(n<sup>2</sup>)  | O(1) | 稳定  |
+| Select Sort    | O(n<sup>2</sup>)           | O(n<sup>2</sup>)  | O(n<sup>2</sup>)  | O(1) | 不稳定  | 
+| Insertion Sort | O(n<sup>2</sup>            | O(n)              | O(n<sup>2</sup>)  | O(1) | 稳定  |
+| Shell Sort     | O(nlogn)~O(n<sup>2</sup>)  | O(n<sup>1.3</sup>)| O(nlogn)          | O(1) | 不稳定 | 
+| Quick Sort     | O(nlogn)                   | O(nlogn)          | O(nlogn)          | O(1) | 稳定  | 
+| Merge Sort     | O(nlogn)                   | O(nlogn)          | O(n<sup>2</sup>)  | O(1) | 不稳定  |
 
-##Search
+## Search
 
-##DP
+## DP
